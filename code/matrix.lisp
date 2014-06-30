@@ -1,6 +1,7 @@
 ;;;; Common Lisp version
 
 ;;;; Helper functions
+;;;; (you probably do not need them, but they just made things easier for me)
 
   ;;;; (range min max step) = [min, min + step..max]
   (defun range (min max &optional (step 1))
@@ -24,7 +25,7 @@
   ;;; (zip ...) = a list that has zipped elements of the arguments it take
   (defun zip (&rest xs) (apply 'mapcar (cons 'list xs)))
 
-  ;;;; without xs n = snd $ unzip $ filter (\(i, e) -> i/=n) (zip [1..] xs)
+  ;;;; (without xs n) = xs without nth element (n starting from 0)
   (defun without (xs n) 
     (second (unzip (remove-if (lambda (e) (eq (first e) n)) 
                               (zip (range 1 (length xs)) xs) )))
@@ -74,6 +75,8 @@
   )
 
 ;;;; Program itself
+
+;;;; (main) = the IO section of the program
 (defun main ()
   (print "Specify a size for your n * n matrix:")
   (defparameter temp (randomSqMatrix (parse-integer (read-line)) 50))
