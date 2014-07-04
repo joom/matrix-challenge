@@ -14,18 +14,18 @@ fun even(x: int) = x mod 2 = 0
   fun sqMatrix(size: int , value: int) : matrix =
     List.tabulate(size, (fn x => List.tabulate(size, fn y => value)))
 
-  (*randomSqMatrix (size, seed) = a square matrix of size*size, 
+  (*randomSqMatrix (size, seed) = a square matrix of size*size,
       cells filled with random numbers coming from the seed *)
   fun randomSqMatrix(size: int, seed: Random.rand) : matrix =
-    map (fn r => map (fn x => Random.randRange(0, 10) seed) r) 
+    map (fn r => map (fn x => Random.randRange(0, 10) seed) r)
         (sqMatrix(size, 0))
 
   (* getMinor m (i,j) = the minor of the matrix m for (i,j) *)
   fun getMinor (m: matrix) (i: int , j: int) : matrix =
     let
       fun without(xs, n) =
-        (#2 (ListPair.unzip 
-          (List.filter (fn (i, e) => i <> n) 
+        (#2 (ListPair.unzip
+          (List.filter (fn (i, e) => i <> n)
                       (ListPair.zip(range(1, length xs), xs)) )))
     in
       map (fn r => without(r, j)) (without(m, i))
@@ -50,7 +50,7 @@ fun even(x: int) = x mod 2 = 0
   fun getDeterminant(m: matrix) : int =
     if length m = 1
     then getCell m (1, 1)
-    else 
+    else
       foldr (fn (x,y) => x + y) 0
       (evensNegative(map (fn p => (getCell m p) * (getDeterminant (getMinor m p)))
                         (getFirstRowPairs m)))

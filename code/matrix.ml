@@ -4,7 +4,7 @@ type matrix = int list list
 
 (* helper functions *)
 
-  (* zip from 
+  (* zip from
     http://www.matt-mcdonnell.com/code/code_ocaml/ocaml_fold/ocaml_fold.html *)
   (* Zip two lists (possibly unequal lengths) into a tuple *)
   let rec zip lst1 lst2 = match lst1,lst2 with
@@ -37,14 +37,14 @@ type matrix = int list list
   (* randomSqMatrix size = a square matrix of size*size,
   *                       filled with random numbers *)
   let randomSqMatrix (size: int) : matrix =
-    List.map (fun r -> List.map (fun x -> Random.int 20) r) 
+    List.map (fun r -> List.map (fun x -> Random.int 20) r)
         (sqMatrix size 0)
 
   (* getMinor m (i,j) = the minor of the matrix m for (i,j) *)
   let getMinor (m: matrix) ((i: int), (j: int)) : matrix =
     let without xs n =
-      snd (unzip 
-        (List.filter (fun (i, e) -> i <> n) 
+      snd (unzip
+        (List.filter (fun (i, e) -> i <> n)
                     (zip (range 1 (List.length xs)) xs)) )
     in
       List.map (fun r -> without r j) (without m i)
@@ -68,7 +68,7 @@ type matrix = int list list
   let rec getDeterminant(m: matrix) : int =
     if List.length m == 1
     then getCell m (1, 1)
-    else 
+    else
       List.fold_right (fun x y -> x + y)
       (evensNegative(List.map (fun p -> (getCell m p) * (getDeterminant (getMinor m p)))
                         (getFirstRowPairs m))) 0

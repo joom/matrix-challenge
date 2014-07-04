@@ -10,12 +10,12 @@ data Parity = Even | Odd deriving (Show, Eq)
 sqMatrix :: Int -> Int -> Matrix
 sqMatrix size val = take size $ repeat (take size [val,val..val])
 
---randomSqMatrix size seed = a square matrix of size*size, 
+--randomSqMatrix size seed = a square matrix of size*size,
 --  cells filled with random numbers coming from the seed
 randomSqMatrix :: (RandomGen g) => Int -> g -> [[Int]]
 randomSqMatrix size seed = chunksOf size rndMod10Seq
     where rndSeq = (take (size^2) (randoms seed :: [Int]))
-          rndMod10Seq = map (\a -> a `mod` 10) rndSeq 
+          rndMod10Seq = map (\a -> a `mod` 10) rndSeq
 
 --getMinor m (i,j) = the minor of the matrix m for (i,j)
 getMinor :: Matrix -> (Int, Int) -> Matrix
@@ -34,12 +34,12 @@ getCell m (i, j) = m !! (i - 1) !! (j - 1)
 --evensNegative xs = the same list with the elements with even indices negated
 --  indices start from 1
 evensNegative :: Num b => [b] -> [b]
-evensNegative xs = 
+evensNegative xs =
     map (\(p,x) -> if p == Even then -x else x) $ zip (cycle [Odd,Even]) xs
 
 --getDeterminant m = calculates determinant for matrix m
 getDeterminant :: Matrix -> Int
-getDeterminant m 
+getDeterminant m
     | length m == 1 = getCell m (1,1)
     | otherwise     = sum $ evensNegative list
         where list = map (\p -> (getCell m p) * (getDeterminant (getMinor m p)) ) (getFirstRowPairs m)
