@@ -4,6 +4,7 @@
 (function() {
   // Helper functions
 
+  // ask(q, cb) = prompts a question to user, calls callback with answer
   var ask = function(question, callback) {
     var r = require('readline').createInterface({
       input: process.stdin,
@@ -15,6 +16,7 @@
     });
   };
 
+  // getRandomInt(min, max) = random number between min and max (inclusive)
   var getRandomInt = function(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
@@ -31,8 +33,8 @@
     });
   };
 
-  // randomSqMatrix (size, seed) = a square matrix of size*size,
-  //      cells filled with random numbers coming from the seed
+  // randomSqMatrix(size, limit) = a square matrix of size*size,
+  //                 cells filled with random numbers up to limit
   var randomSqMatrix = function(size, limit) {
     return sqMatrix(size, 0).map(function (row) {
       return row.map(function () {
@@ -59,7 +61,7 @@
     });
   };
 
-  // getCell (m, i, j) = the cell in the matrix m in (i,j)
+  // getCell(m, i, j) = the cell in the matrix m in (i,j)
   var getCell = function (matrix, i, j) {
     return matrix[i - 1][j - 1];
   };
