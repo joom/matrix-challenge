@@ -8,4 +8,5 @@ A personal challenge that I write a simple matrix determinant calculator in diff
 * [Haskell](code/matrix.hs)
 * [JavaScript (Node.js)](code/matrix.js)
 * [OCaml](code/matrix.ml)
+* [Scala](code/matrix.scala)
 * [Standard ML](code/matrix.sml)
