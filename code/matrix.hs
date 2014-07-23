@@ -20,8 +20,7 @@ randomSqMatrix size seed = chunksOf size rndMod10Seq
 --getMinor m (i,j) = the minor of the matrix m for (i,j)
 getMinor :: Matrix -> (Int, Int) -> Matrix
 getMinor m (i, j) = map (\r -> without r j) $ without m i
-    where size = length m
-          without xs n = snd $ unzip $ filter (\(i, e) -> i/=n) (zip [1..] xs)
+    where without xs n = snd $ unzip $ filter (\(i, e) -> i/=n) (zip [1..] xs)
 
 --getFirstRowPairs m = the list of (row, col) for the first row of the matrix
 getFirstRowPairs :: Matrix -> [(Int, Int)]

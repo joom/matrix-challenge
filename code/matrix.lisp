@@ -25,7 +25,7 @@
   ;;; (zip ...) = a list that has zipped elements of the arguments it take
   (defun zip (&rest xs) (apply 'mapcar (cons 'list xs)))
 
-  ;;;; (without xs n) = xs without nth element (n starting from 0)
+  ;;;; (without xs n) = xs without nth element (n starting from 1)
   (defun without (xs n)
     (second (unzip (remove-if (lambda (e) (eq (first e) n))
                               (zip (range 1 (length xs)) xs) )))
