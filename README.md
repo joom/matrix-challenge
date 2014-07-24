@@ -10,3 +10,4 @@ A personal challenge that I write a simple matrix determinant calculator in diff
 * [OCaml](code/matrix.ml)
 * [Scala](code/matrix.scala)
 * [Standard ML](code/matrix.sml)
+* [Swift](code/matrix.swift)

@@ -45,6 +45,7 @@ object Matrix {
       evensNegative(list).sum
     }
 
+  // toString(m) = string representation of m
   def toString(m: Matrix) : String = {
     def listToString[A](l : List[A]) : String =
       "[" + l.mkString(",") + "]"
