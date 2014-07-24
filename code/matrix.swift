@@ -101,15 +101,14 @@ typealias Matrix = [[Int]]
   func input() -> String {
       var keyboard = NSFileHandle.fileHandleWithStandardInput()
       var inputData = keyboard.availableData
-      var gotten = NSString(data: inputData, encoding:NSUTF8StringEncoding)
-      return gotten.stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
+      return NSString(data: inputData, encoding:NSUTF8StringEncoding)
+              .stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
   }
 
   // main = asks for user input to create a matrix and calculate its determinant
   func main() {
     println("Specify a size for your n * n matrix:")
-    var gotten = input()
-    if let size = gotten.toInt() {
+    if let size = input().toInt() {
       var m = randomSqMatrix(size, 50)
       println("Random Matrix:")
       println(m)
