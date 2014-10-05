@@ -55,3 +55,4 @@ main = do
     putStrLn $ show rs
     putStrLn "Determinant of the matrix above:"
     putStrLn $ show $ getDeterminant rs
+
